@@ -1,0 +1,31 @@
+{
+  "name": "c9forlife-react",
+  "version": "1.0.0",
+  "description": "Cloud 9 for life MERN application",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Kwaku Appau-Nkansah",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.28.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "googleapis": "^95.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.5",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
