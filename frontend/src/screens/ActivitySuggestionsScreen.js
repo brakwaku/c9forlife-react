@@ -11,9 +11,11 @@ import {
 } from '../actions/activitySuggestionActions';
 import { useNavigate } from 'react-router-dom';
 import ActivitySuggestion from '../components/ActivitySuggestion';
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const ActivitySuggestionsScreen = () => {
   document.title = "C9ForLife | Activity Suggestion";
+  useScrollToTop();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
