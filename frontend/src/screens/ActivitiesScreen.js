@@ -89,13 +89,13 @@ const ActivitiesScreen = () => {
 
   return (
     <MainWrapper>
-      {!userInfo.isAdmin && <SuggestActivityButton
+      {userInfo && !userInfo.isAdmin ? <SuggestActivityButton
         className="btn btn-success"
         data-toggle="modal"
         data-target="#myModal"
       >
         Suggest Activity
-      </SuggestActivityButton>}
+      </SuggestActivityButton> : ''}
       
       <ContentWrapper className="container">
         {loadingActivitySuggestionCreate && <Loader />}
