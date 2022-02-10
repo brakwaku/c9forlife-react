@@ -1,23 +1,25 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import InputField from "../components/InputField";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
-import { validators } from "../utilities/Validator";
-import { register } from "../actions/userActions";
-import media from "../utilities/media";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import InputField from '../components/InputField';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
+import { validators } from '../utilities/Validator';
+import { register } from '../actions/userActions';
+import media from '../utilities/media';
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const SignupScreen = () => {
-  document.title = "C9ForLife | Register";
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [magicWord, setMagicWord] = useState("");
+  document.title = 'C9ForLife | Register';
+  useScrollToTop();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [magicWord, setMagicWord] = useState('');
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -35,7 +37,7 @@ const SignupScreen = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const redirect = location.state ? location.state : "/";
+  const redirect = location.state ? location.state : '/';
 
   useEffect(() => {
     if (userInfo) {
@@ -46,7 +48,7 @@ const SignupScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      setMessage('Passwords do not match');
     } else {
       dispatch(register(firstName, lastName, email, password, magicWord));
     }
@@ -68,7 +70,7 @@ const SignupScreen = () => {
               validators={[
                 {
                   check: validators.required,
-                  message: "This field is required",
+                  message: 'This field is required',
                 },
               ]}
               onChange={handleFirstName}
@@ -82,7 +84,7 @@ const SignupScreen = () => {
               validators={[
                 {
                   check: validators.required,
-                  message: "This field is required",
+                  message: 'This field is required',
                 },
               ]}
               onChange={handleLastName}
@@ -96,11 +98,11 @@ const SignupScreen = () => {
               validators={[
                 {
                   check: validators.email,
-                  message: "Please enter a valid email address",
+                  message: 'Please enter a valid email address',
                 },
                 {
                   check: validators.required,
-                  message: "This field is required",
+                  message: 'This field is required',
                 },
               ]}
               onChange={handleEmail}
@@ -114,7 +116,7 @@ const SignupScreen = () => {
               validators={[
                 {
                   check: validators.required,
-                  message: "This field is required",
+                  message: 'This field is required',
                 },
               ]}
               onChange={handlePassword}
@@ -128,7 +130,7 @@ const SignupScreen = () => {
               validators={[
                 {
                   check: validators.required,
-                  message: "This field is required",
+                  message: 'This field is required',
                 },
               ]}
               onChange={handleConfirmPassword}
@@ -149,8 +151,8 @@ const SignupScreen = () => {
             </div>
           </form>
           <div>
-            Have an Account?{" "}
-            <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+            Have an Account?{' '}
+            <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
               Login
             </Link>
           </div>
