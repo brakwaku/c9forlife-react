@@ -7,9 +7,11 @@ import { validators } from "../utilities/Validator";
 import styled from "styled-components";
 import { passwordResetEmail } from "../actions/userActions";
 import media from "../utilities/media";
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const ForgotPasswordScreen = () => {
   document.title = "C9ForLife | Forgot Password";
+  useScrollToTop();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
 
