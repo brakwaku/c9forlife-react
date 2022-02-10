@@ -1,15 +1,17 @@
-import styled from "styled-components";
-import backgroungImg from "../assets/fam.jpg";
+import styled from 'styled-components';
+import backgroungImg from '../assets/fam.jpg';
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const AboutScreen = () => {
-  document.title = "C9ForLife | About";
+  document.title = 'C9ForLife | About';
+  useScrollToTop();
   return (
     <MainWrapper>
       <ContentWrapper className="container">
         <h1>WE ARE FAMILY!!</h1>
         <div className="card border-primary">
           <p>
-            C9ForLife was created by Maddie Glance a Survivor. See her story at{" "}
+            C9ForLife was created by Maddie Glance a Survivor. See her story at{' '}
             <a
               href="https://www.c9forlife.com"
               target="_blank"
@@ -72,8 +74,8 @@ const ContentWrapper = styled.div`
   }
 
   > a {
-      margin-top: 2.5rem;
-      margin-bottom: 2.5rem;
-      margin-left: 48%;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    margin-left: 48%;
   }
 `;
