@@ -7,9 +7,11 @@ import Motivation from "../components/Motivation";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import heroImage from "../assets/gotThis.jpg";
+import { useScrollToTop } from "../utilities/scrollToTop";
 
 const MotivationScreen = () => {
   document.title = "C9ForLife | Motivation";
+  useScrollToTop();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
