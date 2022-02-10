@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const ContactScreen = () => {
   document.title = "C9ForLife | Contact";
+  useScrollToTop();
   return (
     <ContactWrapper className="jumbotron text-center contacts">
       <div className="container">
