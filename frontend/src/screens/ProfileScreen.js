@@ -9,11 +9,13 @@ import Avatar from "../components/ImageCropper/Avatar";
 import media from "../utilities/media";
 import heroimage from "../assets/arch.jpg";
 import { SnackbarContext } from "../components/ImageCropper/RenderSnackBar";
+import { useScrollToTop } from '../utilities/scrollToTop';
 // import axios from "axios";
 // import userprofileimage from "../assets/personPlaceholder.png";
 
 const ProfileScreen = () => {
   document.title = "C9ForLife | Profile";
+  useScrollToTop();
   const [message, setMessage] = useState(null);
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
