@@ -25,9 +25,11 @@ import User from '../components/User';
 import Activity from '../components/Activity';
 import Motivation from '../components/Motivation';
 import SearchBox from '../components/SearchBox';
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const AdminScreen = () => {
   document.title = 'C9ForLife | Admin';
+  useScrollToTop();
   const [activityTitle, setActivityTitle] = useState('');
   const [activityDescription, setActivityDescription] = useState('');
   const [motivationAuthor, setMotivationAuthor] = useState('');
