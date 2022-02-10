@@ -16,9 +16,11 @@ import styled from "styled-components";
 import Hero from "../components/Hero";
 import MyCards from "../components/MyCards";
 import heroImage from "../assets/lo.jpg";
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const DashboardScreen = () => {
   document.title = "C9ForLife | Dashboard";
+  useScrollToTop();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
