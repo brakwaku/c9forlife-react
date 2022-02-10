@@ -9,9 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import media from "../utilities/media";
 import { updatePassword } from "../actions/userActions";
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const ResetPasswordScreen = () => {
   document.title = "C9ForLife | Reset Password";
+  useScrollToTop();
   const { id } = useParams();
   const { token } = useParams();
 
