@@ -7,9 +7,11 @@ import { getUserDetails } from "../actions/userActions";
 import heroImage from "../assets/arch.jpg";
 import Hero from "../components/Hero";
 import styled from "styled-components";
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const ArchiveScreen = () => {
   document.title = "C9ForLife | Archive";
+  useScrollToTop();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
