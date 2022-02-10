@@ -3,9 +3,11 @@ import styled from "styled-components";
 import backgoundImage from "../assets/2ix.jpg";
 import authorImage from "../assets/w.jpg";
 import media from "../utilities/media";
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const HomeScreen = () => {
   document.title = "C9ForLife | Home";
+  useScrollToTop();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   return (
