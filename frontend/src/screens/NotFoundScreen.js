@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const NotFoundScreen = () => {
   document.title = "C9ForLife | Page Not Found";
+  useScrollToTop();
   return (
     <div className="container">
       <div className="pt-5" style={{ minHeight: 80 + "vh" }}>
