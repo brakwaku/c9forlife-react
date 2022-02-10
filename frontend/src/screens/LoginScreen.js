@@ -9,9 +9,11 @@ import InputField from "../components/InputField";
 import { validators } from "../utilities/Validator";
 import { login } from '../actions/userActions';
 import media from "../utilities/media";
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const LoginScreen = () => {
   document.title = "C9ForLife | Login";
+  useScrollToTop();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
