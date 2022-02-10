@@ -11,9 +11,11 @@ import ActivityUser from '../components/ActivityUser';
 // import { SnackbarContext } from "../components/ImageCropper/RenderSnackBar";
 import media from '../utilities/media';
 import backImage from '../assets/loginii.jpg';
+import { useScrollToTop } from '../utilities/scrollToTop';
 
 const ActivitiesScreen = () => {
   document.title = "C9ForLife | Activities";
+  useScrollToTop();
   const [activitySuggestionTitle, setActivitySuggestionTitle] = useState('');
   const [activitySuggestionDescription, setActivitySuggestionDescription] =
     useState('');
