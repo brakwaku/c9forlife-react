@@ -76,6 +76,30 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   if (user) {
+    // Send welcome email to user
+    sendEmail({
+      subject: 'WELCOME TO HAPPINESS',
+      html: `
+          <div style="padding: 0; height: 90vh; width: 90vw; margin: auto; border: 2px solid #199319; border-radius: 0 0 30px 30px;">
+            <div style="background-color: whitesmoke; height: 3rem; padding: 1rem;">
+              <img style="width: 4rem; height: 4rem;" src='https://res.cloudinary.com/c9forlife/image/upload/v1644987254/icons/C9forlifeLogo_zsza4u.png' />
+            </div>
+            <div style="display: flex; justify-self: center; align-items: center; padding-top: 1rem;">
+            <img style="width: 17rem; height: auto; margin: auto;" src='https://res.cloudinary.com/c9forlife/image/upload/v1644992285/icons/T_wsfv4v.png' alt='Icon'/>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-self: center; align-items: center;">
+              <h1>CONGRATULATIONS!!</h1>
+              <p>You have successfully registered on the Cloud 9 For Life web community</p>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-self: center; align-items: center; margin-top: 2rem;">
+              <a style="background-color: #199319; color: white; padding: 15px 25px; border-radius: 10px; text-decoration: none;" href='https://c94life.herokuapp.com/login'>SIGN IN</a>
+            </div>
+          </div>
+            `,
+      to: email,
+      from: process.env.EMAIL,
+    });
+
     res.status(201).json({
       _id: user._id,
       firstName: user.firstName,
