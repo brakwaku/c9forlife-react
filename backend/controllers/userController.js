@@ -295,8 +295,21 @@ const getUserByEmail = asyncHandler(async (req, res) => {
     sendEmail({
       subject: 'C9ForLife account password reset',
       html: `
-                <h3>Click <a href="https://c9forlife.herokuapp.com/reset/${decoded.id}/${token}"> this link</a> to set a new password</h3>
-                <strong><h1>Please note that this link expires in less than 120 seconds</h1></strong>
+          <div style="padding: 0; height: 90vh; width: 90vw; margin: auto; border: 2px solid orange; border-radius: 5px;">
+            <div style="background-color: whitesmoke; height: 3rem; padding: 1rem;">
+              <img style="width: 4rem; height: 4rem;" src='https://res.cloudinary.com/c9forlife/image/upload/v1644987254/icons/C9forlifeLogo_zsza4u.png' />
+            </div>
+            <div style="display: flex; justify-self: center; align-items: center; padding-top: 1rem;">
+              <img style="width: 7rem; height: 7rem; margin: auto;" src='https://res.cloudinary.com/c9forlife/image/upload/v1644987159/icons/R_rjukgi.png' alt='Icon'/>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-self: center; align-items: center;">
+              <h1>FORGOT <br />YOUR<br /> PASSWORD?</h1>
+              <p>Don't worry, we got your back! Click the button to set a new password.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-self: center; align-items: center; margin-top: 2rem;">
+              <a style="background-color: #199319; color: white; padding: 15px 25px; border-radius: 10px; text-decoration: none;" href='https://c9forlife.herokuapp.com/reset/${decoded.id}/${token}'>RESER PASSWORD</a>
+            </div>
+          </div>
             `,
       to: email,
       from: process.env.EMAIL,
