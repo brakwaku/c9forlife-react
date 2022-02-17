@@ -135,7 +135,7 @@ const ActivitiesScreen = () => {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Suggest An Activity</h5>
+              <h5 className="modal-title">What is your idea?</h5>
               <button
                 type="button"
                 className="close"
