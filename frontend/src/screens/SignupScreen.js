@@ -27,9 +27,12 @@ const SignupScreen = () => {
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
-  const userLogin = useSelector(state => state.userLogin);
-  const { loading: userLoading, error: userError, userInfo: loggedUser } = userLogin;
-
+  const userLogin = useSelector((state) => state.userLogin);
+  const {
+    loading: userLoading,
+    error: userError,
+    userInfo: loggedUser,
+  } = userLogin;
 
   const handleFirstName = (firstName) => setFirstName(firstName);
   const handleLastName = (lastName) => setLastName(lastName);
@@ -58,111 +61,109 @@ const SignupScreen = () => {
 
   return (
     <MainWrapper>
-      {!loggedUser &&
-      <CardWrapper className="card">
-        <div className="card-header">Secure Signup</div>
-        <div className="card-body">
-          {message && <Message variant="danger">{message}</Message>}
-          {error && <Message variant="danger">{error}</Message>}
-          {userError && <Message variant="danger">{userError}</Message>}
-          {loading && <Loader />}
-          {userLoading && <Loader />}
-          <form onSubmit={submitHandler}>
-            <InputField
-              value={firstName}
-              placeholder="First Name"
-              type="text"
-              validators={[
-                {
-                  check: validators.required,
-                  message: 'This field is required',
-                },
-              ]}
-              onChange={handleFirstName}
-              required
-              fontAwesomeIcon="fas fa-user-plus"
-            />
-            <InputField
-              value={lastName}
-              placeholder="Last Name"
-              type="text"
-              validators={[
-                {
-                  check: validators.required,
-                  message: 'This field is required',
-                },
-              ]}
-              onChange={handleLastName}
-              required
-              fontAwesomeIcon="fas fa-user-tie"
-            />
-            <InputField
-              value={email}
-              placeholder="Email Address"
-              type="email"
-              validators={[
-                {
-                  check: validators.email,
-                  message: 'Please enter a valid email address',
-                },
-                {
-                  check: validators.required,
-                  message: 'This field is required',
-                },
-              ]}
-              onChange={handleEmail}
-              required
-              fontAwesomeIcon="fas fa-envelope"
-            />
-            <InputField
-              value={password}
-              placeholder="Password"
-              type="password"
-              validators={[
-                {
-                  check: validators.required,
-                  message: 'This field is required',
-                },
-              ]}
-              onChange={handlePassword}
-              required
-              fontAwesomeIcon="fas fa-key"
-            />
-            <InputField
-              value={confirmPassword}
-              placeholder="Confirm Password"
-              type="password"
-              validators={[
-                {
-                  check: validators.required,
-                  message: 'This field is required',
-                },
-              ]}
-              onChange={handleConfirmPassword}
-              required
-              fontAwesomeIcon="fas fa-key"
-            />
-            <InputField
-              value={magicWord}
-              placeholder="Magic Word"
-              type="text"
-              onChange={handleMagicWord}
-              fontAwesomeIcon="fas fa-lock"
-            />
-            <div className="text-right">
-              <ButtonWrapper type="submit" className="btn btn-info">
-                Submit
-              </ButtonWrapper>
+      {!loggedUser && (
+        <CardWrapper className="card">
+          <div className="card-header">Secure Signup</div>
+          <div className="card-body">
+            {message && <Message variant="danger">{message}</Message>}
+            {error && <Message variant="danger">{error}</Message>}
+            {userError && <Message variant="danger">{userError}</Message>}
+            {loading && <Loader />}
+            {userLoading && <Loader />}
+            <form onSubmit={submitHandler}>
+              <InputField
+                value={firstName}
+                placeholder="First Name"
+                type="text"
+                validators={[
+                  {
+                    check: validators.required,
+                    message: 'This field is required',
+                  },
+                ]}
+                onChange={handleFirstName}
+                required
+                fontAwesomeIcon="fas fa-user-plus"
+              />
+              <InputField
+                value={lastName}
+                placeholder="Last Name"
+                type="text"
+                validators={[
+                  {
+                    check: validators.required,
+                    message: 'This field is required',
+                  },
+                ]}
+                onChange={handleLastName}
+                required
+                fontAwesomeIcon="fas fa-user-tie"
+              />
+              <InputField
+                value={email}
+                placeholder="Email Address"
+                type="email"
+                validators={[
+                  {
+                    check: validators.email,
+                    message: 'Please enter a valid email address',
+                  },
+                  {
+                    check: validators.required,
+                    message: 'This field is required',
+                  },
+                ]}
+                onChange={handleEmail}
+                required
+                fontAwesomeIcon="fas fa-envelope"
+              />
+              <InputField
+                value={password}
+                placeholder="Password"
+                type="password"
+                validators={[
+                  {
+                    check: validators.required,
+                    message: 'This field is required',
+                  },
+                ]}
+                onChange={handlePassword}
+                required
+                fontAwesomeIcon="fas fa-key"
+              />
+              <InputField
+                value={confirmPassword}
+                placeholder="Confirm Password"
+                type="password"
+                validators={[
+                  {
+                    check: validators.required,
+                    message: 'This field is required',
+                  },
+                ]}
+                onChange={handleConfirmPassword}
+                required
+                fontAwesomeIcon="fas fa-key"
+              />
+              <InputField
+                value={magicWord}
+                placeholder="Magic Word"
+                type="text"
+                onChange={handleMagicWord}
+                fontAwesomeIcon="fas fa-lock"
+              />
+              <div className="text-right">
+                <ButtonWrapper type="submit" className="btn btn-info">
+                  Submit
+                </ButtonWrapper>
+              </div>
+            </form>
+            <div>
+              Have an Account? <Link to="/login">Login</Link>
             </div>
-          </form>
-          <div>
-            Have an Account?{' '}
-            <Link to='/login'>
-              Login
-            </Link>
           </div>
-        </div>
-      </CardWrapper> }
+        </CardWrapper>
+      )}
     </MainWrapper>
   );
 };
