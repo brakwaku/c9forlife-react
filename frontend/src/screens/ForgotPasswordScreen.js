@@ -32,7 +32,7 @@ const ForgotPasswordScreen = () => {
     if (userInfo) {
       navigate('/');
     }
-    
+
     if (email && success) {
       setMessage('Check your inbox for password reset link');
     }
@@ -46,36 +46,37 @@ const ForgotPasswordScreen = () => {
   };
   return (
     <MainWrapper>
-      {!userInfo &&
-      <CardWrapper className="card">
-        <div className="card-header">Reset Password</div>
-        <div className="card-body">
-          {error && <Message variant="danger">{error}</Message>}
-          {loading && <Loader />}
-          {message && <Message variant="success">{message}</Message>}
-          <form onSubmit={submitHandler}>
-            <InputField
-              value={email}
-              placeholder="Please enter your email address"
-              type="email"
-              validators={[
-                {
-                  check: validators.email,
-                  message: 'Please enter a valid email address',
-                },
-              ]}
-              onChange={handleEmail}
-              fontAwesomeIcon="fas fa-envelope"
-            />
+      {!userInfo && (
+        <CardWrapper className="card">
+          <div className="card-header">Reset Password</div>
+          <div className="card-body">
+            {error && <Message variant="danger">{error}</Message>}
+            {loading && <Loader />}
+            {message && <Message variant="success">{message}</Message>}
+            <form onSubmit={submitHandler}>
+              <InputField
+                value={email}
+                placeholder="Please enter your email address"
+                type="email"
+                validators={[
+                  {
+                    check: validators.email,
+                    message: 'Please enter a valid email address',
+                  },
+                ]}
+                onChange={handleEmail}
+                fontAwesomeIcon="fas fa-envelope"
+              />
 
-            <div className="text-right">
-              <button type="submit" className="btn btn-info my-3">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </CardWrapper> }
+              <div className="text-right">
+                <button type="submit" className="btn btn-info my-3">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </CardWrapper>
+      )}
     </MainWrapper>
   );
 };
