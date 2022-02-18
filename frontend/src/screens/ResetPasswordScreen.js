@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
-import styled from "styled-components";
-import InputField from "../components/InputField";
-import { validators } from "../utilities/Validator";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import media from "../utilities/media";
-import { updatePassword } from "../actions/userActions";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
+import styled from 'styled-components';
+import InputField from '../components/InputField';
+import { validators } from '../utilities/Validator';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import media from '../utilities/media';
+import { updatePassword } from '../actions/userActions';
 import { useScrollToTop } from '../utilities/scrollToTop';
 
 const ResetPasswordScreen = () => {
-  document.title = "C9ForLife | Reset Password";
+  document.title = 'C9ForLife | Reset Password';
   useScrollToTop();
   const { id } = useParams();
   const { token } = useParams();
 
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ const ResetPasswordScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
+      setMessage('Passwords do not match');
     } else {
       dispatch(updatePassword({ id: id, password }, token));
     }
@@ -55,52 +55,53 @@ const ResetPasswordScreen = () => {
 
   return (
     <MainWrapper>
-      {!userInfo &&
-      <CardWrapper className="card">
-        <div className="card-header">Reset Password</div>
-        <div className="card-body">
-          {message && <Message variant="danger">{message}</Message>}
-          {error && <Message variant="danger">{error}</Message>}
-          {success && <Message variant="success">Password updated</Message>}
-          {loading && <Loader />}
-          <form onSubmit={submitHandler}>
-            <InputField
-              value={password}
-              placeholder="Password"
-              type="password"
-              validators={[
-                {
-                  check: validators.required,
-                  message: "This field is required",
-                },
-              ]}
-              onChange={handlePassword}
-              required
-              fontAwesomeIcon="fas fa-key"
-            />
-            <InputField
-              value={confirmPassword}
-              placeholder="Confirm Password"
-              type="password"
-              validators={[
-                {
-                  check: validators.required,
-                  message: "This field is required",
-                },
-              ]}
-              onChange={handleConfirmPassword}
-              required
-              fontAwesomeIcon="fas fa-key"
-            />
+      {!userInfo && (
+        <CardWrapper className="card">
+          <div className="card-header">Reset Password</div>
+          <div className="card-body">
+            {message && <Message variant="danger">{message}</Message>}
+            {error && <Message variant="danger">{error}</Message>}
+            {success && <Message variant="success">Password updated</Message>}
+            {loading && <Loader />}
+            <form onSubmit={submitHandler}>
+              <InputField
+                value={password}
+                placeholder="Password"
+                type="password"
+                validators={[
+                  {
+                    check: validators.required,
+                    message: 'This field is required',
+                  },
+                ]}
+                onChange={handlePassword}
+                required
+                fontAwesomeIcon="fas fa-key"
+              />
+              <InputField
+                value={confirmPassword}
+                placeholder="Confirm Password"
+                type="password"
+                validators={[
+                  {
+                    check: validators.required,
+                    message: 'This field is required',
+                  },
+                ]}
+                onChange={handleConfirmPassword}
+                required
+                fontAwesomeIcon="fas fa-key"
+              />
 
-            <div className="text-right">
-              <button type="submit" className="btn btn-info my-3">
-                Reset
-              </button>
-            </div>
-          </form>
-        </div>
-      </CardWrapper> }
+              <div className="text-right">
+                <button type="submit" className="btn btn-info my-3">
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </CardWrapper>
+      )}
     </MainWrapper>
   );
 };
