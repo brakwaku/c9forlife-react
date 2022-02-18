@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
-import InputField from "../components/InputField";
-import { validators } from "../utilities/Validator";
-import styled from "styled-components";
-import { passwordResetEmail } from "../actions/userActions";
-import media from "../utilities/media";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
+import InputField from '../components/InputField';
+import { validators } from '../utilities/Validator';
+import styled from 'styled-components';
+import { passwordResetEmail } from '../actions/userActions';
+import media from '../utilities/media';
 import { useScrollToTop } from '../utilities/scrollToTop';
 
 const ForgotPasswordScreen = () => {
-  document.title = "C9ForLife | Forgot Password";
+  document.title = 'C9ForLife | Forgot Password';
   useScrollToTop();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -22,11 +23,20 @@ const ForgotPasswordScreen = () => {
   );
   const { loading, error, success } = userPasswordResetEmail;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const navigate = useNavigate();
+
   useEffect(() => {
-    if (email && success) {
-      setMessage("Check your inbox for password reset link");
+    if (userInfo) {
+      navigate('/');
     }
-  }, [email, success]);
+    
+    if (email && success) {
+      setMessage('Check your inbox for password reset link');
+    }
+  }, [email, success, userInfo, navigate]);
 
   const handleEmail = (email) => setEmail(email);
 
@@ -36,6 +46,7 @@ const ForgotPasswordScreen = () => {
   };
   return (
     <MainWrapper>
+      {!userInfo &&
       <CardWrapper className="card">
         <div className="card-header">Reset Password</div>
         <div className="card-body">
@@ -50,7 +61,7 @@ const ForgotPasswordScreen = () => {
               validators={[
                 {
                   check: validators.email,
-                  message: "Please enter a valid email address",
+                  message: 'Please enter a valid email address',
                 },
               ]}
               onChange={handleEmail}
@@ -64,7 +75,7 @@ const ForgotPasswordScreen = () => {
             </div>
           </form>
         </div>
-      </CardWrapper>
+      </CardWrapper> }
     </MainWrapper>
   );
 };
