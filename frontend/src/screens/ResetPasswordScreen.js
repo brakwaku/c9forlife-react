@@ -27,6 +27,9 @@ const ResetPasswordScreen = () => {
   const userUpdatePassword = useSelector((state) => state.userUpdatePassword);
   const { loading, error, success, user } = userUpdatePassword;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const handlePassword = (password) => setPassword(password);
   const handleConfirmPassword = (confirmPassword) =>
     setConfirmPassword(confirmPassword);
@@ -35,7 +38,11 @@ const ResetPasswordScreen = () => {
     if (success) {
       navigate(`/login`);
     }
-  }, [dispatch, navigate, user, success, error]);
+
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [dispatch, navigate, user, success, error, userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -48,6 +55,7 @@ const ResetPasswordScreen = () => {
 
   return (
     <MainWrapper>
+      {!userInfo &&
       <CardWrapper className="card">
         <div className="card-header">Reset Password</div>
         <div className="card-body">
@@ -92,7 +100,7 @@ const ResetPasswordScreen = () => {
             </div>
           </form>
         </div>
-      </CardWrapper>
+      </CardWrapper> }
     </MainWrapper>
   );
 };
