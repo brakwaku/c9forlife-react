@@ -27,6 +27,10 @@ const SignupScreen = () => {
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
+  const userLogin = useSelector(state => state.userLogin);
+  const { loading: userLoading, error: userError, userInfo: loggedUser } = userLogin;
+
+
   const handleFirstName = (firstName) => setFirstName(firstName);
   const handleLastName = (lastName) => setLastName(lastName);
   const handleEmail = (email) => setEmail(email);
@@ -36,14 +40,12 @@ const SignupScreen = () => {
   const handleMagicWord = (magicWord) => setMagicWord(magicWord);
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const redirect = location.state ? location.state : '/';
 
   useEffect(() => {
-    if (userInfo) {
-      navigate(redirect);
+    if (userInfo || loggedUser) {
+      navigate(-1);
     }
-  }, [navigate, userInfo, redirect]);
+  }, [navigate, userInfo, loggedUser]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -56,12 +58,15 @@ const SignupScreen = () => {
 
   return (
     <MainWrapper>
+      {!loggedUser &&
       <CardWrapper className="card">
         <div className="card-header">Secure Signup</div>
         <div className="card-body">
           {message && <Message variant="danger">{message}</Message>}
           {error && <Message variant="danger">{error}</Message>}
+          {userError && <Message variant="danger">{userError}</Message>}
           {loading && <Loader />}
+          {userLoading && <Loader />}
           <form onSubmit={submitHandler}>
             <InputField
               value={firstName}
@@ -152,12 +157,12 @@ const SignupScreen = () => {
           </form>
           <div>
             Have an Account?{' '}
-            <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
+            <Link to='/login'>
               Login
             </Link>
           </div>
         </div>
-      </CardWrapper>
+      </CardWrapper> }
     </MainWrapper>
   );
 };
