@@ -146,8 +146,10 @@ const AdminScreen = () => {
   };
 
   useEffect(() => {
-    if ((userInfo && !userInfo.isAdmin) || userInfo === null || !userInfo) {
+    if (userInfo === null || !userInfo) {
       navigate('/login');
+    } else if (!userInfo.isAdmin) {
+      navigate(-1);
     }
 
     if (
