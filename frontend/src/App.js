@@ -14,6 +14,7 @@ import DashboardScreen from './screens/DashboardScreen';
 import ActivitiesScreen from './screens/ActivitiesScreen';
 import ArchiveScreen from './screens/ArchiveScreen';
 import AdminScreen from './screens/AdminScreen';
+import UserEditScreen from './screens/UserEditScreen';
 import ActivitySuggestionsScreen from './screens/ActivitySuggestionsScreen';
 import MotivationScreen from './screens/MotivationScreen';
 import InternalErrorScreen from './screens/InternalErrorScreen';
@@ -37,6 +38,7 @@ function App() {
           <Route path="/activities" element={<ActivitiesScreen />} />
           <Route path="/archive" element={<ArchiveScreen />} />
           <Route path="/admin" element={<AdminScreen />} />
+          <Route path="/admin/users/:id/edit" element={<UserEditScreen />} />
           <Route path="/suggestions" element={<ActivitySuggestionsScreen />} />
           <Route path="/motivation" element={<MotivationScreen />} />
           <Route path="/internal-error" element={<InternalErrorScreen />} />
