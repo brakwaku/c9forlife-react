@@ -48,7 +48,6 @@ const ActivitySuggestion = ({
             <button
               className="btn btn-success"
               type="button"
-              // data-bs-toggle="modal"
               data-target={`#${activitySuggestion._id}`}
               onClick={() => approveHandler(activitySuggestion._id)}
             >
@@ -57,12 +56,10 @@ const ActivitySuggestion = ({
             <button
               className="btn btn-success"
               type="button"
-              // data-bs-toggle="modal"
               data-target={`#${activitySuggestion._id}`}
               onClick={openModal}
             >
               <i className="fas fa-edit"></i> Edit
-              {/* <i className="fas fa-pencil-alt"></i> Edit */}
             </button>
             <button
               className="btn btn-success"
