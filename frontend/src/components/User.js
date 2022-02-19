@@ -3,7 +3,6 @@ import { useState } from 'react';
 import userprofileimage from '../assets/pearl.jpg';
 import EmailModal from './EmailModal';
 import { Link } from 'react-router-dom';
-// import userprofileimage from "../assets/personPlaceholder.png";
 
 const User = ({ user, dispatch, deleteUser, currentUser }) => {
   const [showModal, setShowModal] = useState(false);
