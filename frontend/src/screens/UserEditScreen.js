@@ -1,77 +1,151 @@
+import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getUserDetails, updateUser } from '../actions/userActions';
+import { useScrollToTop } from '../utilities/scrollToTop';
 import { USER_UPDATE_RESET } from '../constants/userConstants';
 
-const UserEditScreen = ({ match, history }) => {
-    const userId = match.params.id;
+const UserEditScreen = () => {
+  document.title = 'C9ForLife | Edit User';
+  useScrollToTop();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [isAdmin, setIsAdmin] = useState(false);
+  const userId = location.pathname.split('/')[3];
 
-    const dispatch = useDispatch();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
-    const userDetails = useSelector(state => state.userDetails);
-    const { loading, error, user } = userDetails;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-    const userUpdate = useSelector(state => state.userUpdate);
-    const { loading: loadingUpdate, error: errorUpdate, success: successUpdate } = userUpdate;
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
 
-    useEffect(() => {
-        if (successUpdate) {
-            dispatch({ type: USER_UPDATE_RESET });
-            history.push('/admin/userlist');
-        } else {
-            if (!user.name || user._id !== userId) {
-                dispatch(getUserDetails(userId));
-            } else {
-                setName(user.name);
-                setEmail(user.email);
-                setIsAdmin(user.isAdmin);
-            }
-        }
+  const userUpdate = useSelector((state) => state.userUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = userUpdate;
 
-    }, [dispatch, history, userId, user, successUpdate])
-
-    const submitHandler = (e) => {
-        e.preventDefault();
-        dispatch(updateUser({ _id: userId, name, email, isAdmin }));
+  useEffect(() => {
+    if (userInfo === null || !userInfo) {
+      navigate('/login');
+    } else if (!userInfo.isAdmin) {
+      navigate(-1);
     }
 
-    return (
-        <>
-            <Link to='/admin/userlist' className='btn btn-light my-3'>Go Back</Link>
+    if (successUpdate) {
+      dispatch({ type: USER_UPDATE_RESET });
+      navigate('/admin');
+    } else {
+      if (!user || !user.name || user._id !== userId) {
+        dispatch(getUserDetails(userId));
+      } else {
+        setFirstName(user.firstName);
+        setLastName(user.lastName);
+        setEmail(user.email);
+        setIsAdmin(user.isAdmin);
+      }
+    }
+  }, [dispatch, navigate, userId, user, userInfo, successUpdate]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(updateUser({ _id: userId, firstName, lastName, email, isAdmin }));
+  };
+
+  return (
+    <MainWrapper className="container">
+      <Link to="/admin" className="btn btn-light my-3">
+        <i className="far fa-arrow-alt-circle-left"></i> Go Back
+      </Link>
+      <>
+        <h1 className="text-center">Edit User</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          <form onSubmit={submitHandler}>
             <div>
-                <h1>Edit User</h1>
-                {loadingUpdate && <Loader />}
-                {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
-                {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-                    <Form onSubmit={submitHandler}>
-                        <Form.Group controlId='name'>
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control type='name' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}></Form.Control>
-                        </Form.Group>
-
-                        <Form.Group controlId='email'>
-                            <Form.Label>Email Address</Form.Label>
-                            <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
-                        </Form.Group>
-
-                        <Form.Group controlId='isAdmin'>
-                            <Form.Check type='checkbox' label='Is Admin' checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)}></Form.Check>
-                        </Form.Group>
-
-                        <Button type='submit' variant='primary'>Update</Button>
-                    </Form>
-                )}
+              <label htmlFor="firstName">First Name</label>
+              <input
+                type="text"
+                placeholder="First Name"
+                className="form-control"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
             </div>
-        </>
-    )
-}
 
-export default UserEditScreen
+            <div>
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="form-control"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label>Email Address</label>
+              <input
+                type="email"
+                placeholder="Enter email"
+                className="form-control"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <br />
+
+            <fieldset>
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="flexSwitchCheckChecked"
+                  checked={isAdmin}
+                  onChange={(e) => setIsAdmin(e.target.checked)}
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor="flexSwitchCheckChecked"
+                >
+                  Is an Admin?
+                </label>
+              </div>
+            </fieldset>
+
+            <UpdateButton type="submit" className="btn btn-primary">
+              Update
+            </UpdateButton>
+          </form>
+        )}
+      </>
+    </MainWrapper>
+  );
+};
+
+export default UserEditScreen;
+
+const MainWrapper = styled.div`
+  min-height: 75vh;
+`;
+
+const UpdateButton = styled.button`
+  margin-top: 2rem;
+`;
