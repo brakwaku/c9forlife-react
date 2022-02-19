@@ -9,7 +9,7 @@ import {
   updateActivitySuggestion,
   approveActivitySuggestion,
 } from '../actions/activitySuggestionActions';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ActivitySuggestion from '../components/ActivitySuggestion';
 import { useScrollToTop } from '../utilities/scrollToTop';
 
@@ -70,6 +70,9 @@ const ActivitySuggestionsScreen = () => {
 
   return (
     <MainContainer className="container">
+    <Link to="/admin" className="btn btn-light my-3">
+      <i className="far fa-arrow-alt-circle-left"></i> Go Back
+    </Link>
       <ContentWrapper className="animate__animated animate__fadeInDown">
         <h3>
           <i className="fas fa-users"></i> SUGGESTIONS
