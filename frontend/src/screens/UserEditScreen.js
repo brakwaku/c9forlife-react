@@ -81,6 +81,7 @@ const UserEditScreen = () => {
             <div>
               <label htmlFor="firstName">First Name</label>
               <input
+                required
                 type="text"
                 placeholder="First Name"
                 className="form-control"
@@ -92,6 +93,7 @@ const UserEditScreen = () => {
             <div>
               <label htmlFor="lastName">Last Name</label>
               <input
+                required
                 type="text"
                 placeholder="Last Name"
                 className="form-control"
@@ -103,8 +105,10 @@ const UserEditScreen = () => {
             <div>
               <label>Email Address</label>
               <input
+                required
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email"
+                readOnly
                 className="form-control"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
