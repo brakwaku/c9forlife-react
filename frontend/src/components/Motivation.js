@@ -45,7 +45,8 @@ const Motivation = ({
                 data-target={"#" + motivation._id}
                 onClick={openModal}
               >
-                <i className="fas fa-pencil-alt"></i> Edit
+                <i className="fas fa-edit"></i> Edit
+                {/* <i className="fas fa-pencil-alt"></i> Edit */}
               </button>
             </FooterWrapper>
           ) : (
