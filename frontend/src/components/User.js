@@ -99,13 +99,5 @@ const NameIconWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
-
-    /* > button {
-      flex: 1;
-    }
-
-    > a {
-      flex: 1;
-    } */
   }
 `;
