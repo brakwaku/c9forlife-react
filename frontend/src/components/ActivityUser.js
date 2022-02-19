@@ -31,19 +31,10 @@ const ActivityUser = ({
         "warning"
       );
     }
-
-    // if (await errorAddActivityToBucket) {
-    //   return setStateSnackbarContext(
-    //     true,
-    //     "Sorry, there was an error in adding activity to bucket. Please try again.",
-    //     "warning"
-    //   );
-    // }
   }
 
   const addToBucketHandler = (activityId) => {
     dispatch(addActivityToBucket(activityId));
-    // dispatch(addActivityToBucket(`${activityId}12`));
     addToBucketToast();
     
   };
