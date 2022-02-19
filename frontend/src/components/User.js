@@ -42,7 +42,6 @@ const User = ({ user, dispatch, deleteUser, currentUser }) => {
               <button
                 className={`btn btn-${user.isAdmin ? 'primary' : 'success'}`}
                 type="button"
-                // href={`mailto:${user.email}`}
                 data-target={`#${user._id}`}
                 onClick={openModal}
               >
@@ -51,9 +50,6 @@ const User = ({ user, dispatch, deleteUser, currentUser }) => {
               <Link to={`/users/${user._id}/edit`}>
                 <button
                   className={`btn btn-${user.isAdmin ? 'primary' : 'success'}`}
-                  // type='button'
-                  // data-target={`#${user._id}`}
-                  // onClick={openModal}
                 >
                   <i className="fas fa-edit"></i>
                 </button>
