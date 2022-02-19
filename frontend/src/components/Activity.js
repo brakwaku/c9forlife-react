@@ -36,12 +36,10 @@ const Activity = ({ activity, dispatch, deleteActivity, updateActivity }) => {
             <button
               className="btn btn-success"
               type="button"
-              // data-bs-toggle="modal"
               data-target={'#' + activity._id}
               onClick={openModal}
             >
               <i className="fas fa-edit"></i> Edit
-              {/* <i className="fas fa-pencil-alt"></i> Edit */}
             </button>
           </FooterWrapper>
         </BodyWrapper>
