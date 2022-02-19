@@ -271,7 +271,9 @@ const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
   if (user) {
-    user.name = req.body.name || user.name;
+    user.firstName = req.body.firstName || user.firstName;
+    user.lastName = req.body.lastName || user.lastName;
+    user.name = req.body.firstName + ' ' + req.body.lastName || user.name;
     user.email = req.body.email || user.email;
     user.isAdmin = req.body.isAdmin;
 
@@ -279,6 +281,8 @@ const updateUser = asyncHandler(async (req, res) => {
 
     res.json({
       _id: updatedUser._id,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
       name: updatedUser.name,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
