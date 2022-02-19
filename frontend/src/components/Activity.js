@@ -40,7 +40,8 @@ const Activity = ({ activity, dispatch, deleteActivity, updateActivity }) => {
               data-target={'#' + activity._id}
               onClick={openModal}
             >
-              <i className="fas fa-pencil-alt"></i> Edit
+              <i className="fas fa-edit"></i> Edit
+              {/* <i className="fas fa-pencil-alt"></i> Edit */}
             </button>
           </FooterWrapper>
         </BodyWrapper>
