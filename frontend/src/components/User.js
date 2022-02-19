@@ -46,7 +46,7 @@ const User = ({ user, dispatch, deleteUser, currentUser }) => {
               >
                 <i className="fas fa-envelope"></i>
               </button>
-              <Link to={`/users/${user._id}/edit`}>
+              <Link to={`/admin/users/${user._id}/edit`}>
                 <button
                   className={`btn btn-${user.isAdmin ? 'primary' : 'success'}`}
                 >
