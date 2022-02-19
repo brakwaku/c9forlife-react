@@ -1,14 +1,15 @@
-import styled from "styled-components";
-import { useState } from "react";
-import userprofileimage from "../assets/pearl.jpg";
+import styled from 'styled-components';
+import { useState } from 'react';
+import userprofileimage from '../assets/pearl.jpg';
 import EmailModal from './EmailModal';
+import { Link } from 'react-router-dom';
 // import userprofileimage from "../assets/personPlaceholder.png";
 
 const User = ({ user, dispatch, deleteUser, currentUser }) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
-    setShowModal(prev => !prev);
+    setShowModal((prev) => !prev);
   };
 
   const deleteHandler = (id) => {
@@ -19,14 +20,17 @@ const User = ({ user, dispatch, deleteUser, currentUser }) => {
 
   return (
     <>
-    <MainWrapper className="bg-success">
-      <InnerWrapper>
-        <img src={user.photoURL !== 'sample' ? user.photoURL : userprofileimage} alt="User Profile" />
-        <NameIconWrapper>
-          <div>{user.name}</div>
-          <div>
+      <MainWrapper className={`bg-${user.isAdmin ? 'primary' : 'success'}`}>
+        <InnerWrapper>
+          <img
+            src={user.photoURL !== 'sample' ? user.photoURL : userprofileimage}
+            alt="User Profile"
+          />
+          <NameIconWrapper>
+            <div>{user.name}</div>
+            <div>
               <button
-                className="btn btn-success"
+                className={`btn btn-${user.isAdmin ? 'primary' : 'success'}`}
                 type="button"
                 onClick={() => deleteHandler(user._id)}
                 data-bs-toggle="tooltip"
@@ -35,20 +39,35 @@ const User = ({ user, dispatch, deleteUser, currentUser }) => {
               >
                 <i className="fas fa-trash"></i>
               </button>
-            <button
-              className="btn btn-success"
-              type='button'
-              // href={`mailto:${user.email}`}
-              data-target={`#${user._id}`}
-              onClick={openModal}
-            >
-              <i className="fas fa-envelope"></i>
-            </button>
-          </div>
-        </NameIconWrapper>
-      </InnerWrapper>
-    </MainWrapper>
-    <EmailModal  showModal={showModal} setShowModal={setShowModal} theUser={user} currentUser={currentUser} />
+              <button
+                className={`btn btn-${user.isAdmin ? 'primary' : 'success'}`}
+                type="button"
+                // href={`mailto:${user.email}`}
+                data-target={`#${user._id}`}
+                onClick={openModal}
+              >
+                <i className="fas fa-envelope"></i>
+              </button>
+              <Link to={`/users/${user._id}/edit`}>
+                <button
+                  className={`btn btn-${user.isAdmin ? 'primary' : 'success'}`}
+                  // type='button'
+                  // data-target={`#${user._id}`}
+                  // onClick={openModal}
+                >
+                  <i className="fas fa-edit"></i>
+                </button>
+              </Link>
+            </div>
+          </NameIconWrapper>
+        </InnerWrapper>
+      </MainWrapper>
+      <EmailModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        theUser={user}
+        currentUser={currentUser}
+      />
     </>
   );
 };
@@ -58,7 +77,7 @@ export default User;
 const MainWrapper = styled.div`
   padding: 0.1rem;
   border-radius: 10px;
-  margin-bottom: .7rem;
+  margin-bottom: 0.7rem;
 `;
 
 const InnerWrapper = styled.div`
@@ -84,6 +103,7 @@ const NameIconWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 2rem;
 
     /* > button {
       flex: 1;
