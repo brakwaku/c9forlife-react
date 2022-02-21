@@ -259,7 +259,7 @@ const AdminScreen = () => {
                   &nbsp;<span className="vr"></span>
                 </div>
 
-                <Link to="/suggestions">
+                <Link to="/admin/suggestions">
                   IDEAS{' '}
                   <span
                     className={`badge bg-${
