@@ -43,16 +43,14 @@ const ProfileScreen = () => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
   const { success } = userUpdateProfile;
 
-  const [theUser, setTheUser] = useState(userInfo);
 
   useEffect(() => {
     if (userInfo === null || !userInfo) {
       navigate("/login");
     } else {
-      if (!user) {
+      if (!user || user.email !== userInfo.email) {
         dispatch(getUserDetails('profile'));
       } else {
-        setTheUser(user);
         setfirstName(user.firstName);
         setlastName(user.lastName);
         setEmail(user.email);
@@ -60,7 +58,7 @@ const ProfileScreen = () => {
         setCloudinaryId(user.cloudinaryId);
       }
     }
-  }, [dispatch, userInfo, navigate, user, theUser]);
+  }, [dispatch, userInfo, navigate, user]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
