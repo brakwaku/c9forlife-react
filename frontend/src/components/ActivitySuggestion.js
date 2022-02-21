@@ -43,7 +43,7 @@ const ActivitySuggestion = ({
         </HeaderWrapper>
         <BodyWrapper className="card-body">
           <p className="card-text">{activitySuggestion.description}</p>
-          <DateWrapper>Suggested on: {createdDate}</DateWrapper>
+          <DateWrapper>Suggested on {createdDate}</DateWrapper>
           <FooterWrapper>
             <button
               className="btn btn-success"
