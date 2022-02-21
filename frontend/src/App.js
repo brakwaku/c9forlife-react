@@ -39,7 +39,7 @@ function App() {
           <Route path="/archive" element={<ArchiveScreen />} />
           <Route path="/admin" element={<AdminScreen />} />
           <Route path="/admin/users/:id/edit" element={<UserEditScreen />} />
-          <Route path="/suggestions" element={<ActivitySuggestionsScreen />} />
+          <Route path="/admin/suggestions" element={<ActivitySuggestionsScreen />} />
           <Route path="/motivation" element={<MotivationScreen />} />
           <Route path="/internal-error" element={<InternalErrorScreen />} />
           <Route path="*" element={<NotFoundScreen />} />
