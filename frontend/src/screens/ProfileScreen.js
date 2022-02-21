@@ -7,11 +7,8 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Avatar from "../components/ImageCropper/Avatar";
 import media from "../utilities/media";
-import heroimage from "../assets/arch.jpg";
 import { SnackbarContext } from "../components/ImageCropper/RenderSnackBar";
 import { useScrollToTop } from '../utilities/scrollToTop';
-// import axios from "axios";
-// import userprofileimage from "../assets/personPlaceholder.png";
 
 const ProfileScreen = () => {
   document.title = "C9ForLife | Profile";
@@ -35,7 +32,6 @@ const ProfileScreen = () => {
   const userDetails = useSelector((state) => state.userDetails);
   const {
     loading: loadingGetUserDetails,
-    // success: successGetUserDetails,
     error: errorGetUserDetails,
     user,
   } = userDetails;
@@ -93,16 +89,13 @@ const ProfileScreen = () => {
       {errorGetUserDetails && (
         <Message variant="danger">{errorGetUserDetails}</Message>
       )}
-      {/* {success && <Message variant="success">Profile updated</Message>} */}
       {loadingGetUserDetails && <Loader />}
-      {/* <h1>User Profile</h1> */}
 
       <MyForm onSubmit={submitHandler}>
         <FormContentWrapper>
           <HeaderWrapper>
             <HeaderContentWrapper className="container"></HeaderContentWrapper>
             <ProfilePicWrapper>
-              {/* <img src={user.photoURL ? user.photoURL : userprofileimage} alt="Profile" /> */}
               <input
                 type="text"
                 hidden
@@ -115,8 +108,6 @@ const ProfileScreen = () => {
                 defaultValue={cloudinaryId}
                 onChange={(e) => setCloudinaryId(e.target.value)}
               />
-              {/* <InputFile type="file" onChange={uploadFileHandler} />
-              {uploading && <Loader />} */}
               <Avatar
                 setPhotoURL={setPhotoURL}
                 setCloudinaryId={setCloudinaryId}
@@ -187,7 +178,6 @@ const UpdateButton = styled.button`
 const HeaderWrapper = styled.div`
   max-height: 22vh;
   min-height: 20vh;
-  /* background-image: url(${heroimage}); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -247,7 +237,6 @@ const BodyWrapper = styled.div`
   flex-direction: column;
   margin-top: 7rem;
   width: 60%;
-  /* margin: 0 auto 0 auto 0; */
 
   ${media.small`
   width: 100%;
@@ -268,30 +257,4 @@ const MyForm = styled.form`
 
 const ProfilePicWrapper = styled.div`
   position: relative;
-  /* border-radius: 50%; */
-  /* background: #6CC3D5;
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
-  justify-self: center; */
-
-  /* > img {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    border: 4px solid #F5F5F5;
-    /* position: relative; *
-  } */
 `;
-
-// const InputFile = styled.input`
-//   position: absolute;
-//   z-index: 1000;
-//   opacity: 0;
-//   cursor: pointer;
-//   right: 0;
-//   top: 0;
-//   height: 100%;
-//   font-size: 24px;
-//   width: 100%;
-// `;
