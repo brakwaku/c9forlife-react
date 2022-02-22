@@ -228,7 +228,6 @@ const AdminScreen = () => {
                           return false;
                         })
                         .map((user) => (
-                          // <User style={{display: user.email === userInfo.email ? 'none' : 'block'}}
                           <User
                             key={user._id}
                             user={user}
