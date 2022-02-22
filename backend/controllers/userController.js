@@ -446,7 +446,6 @@ const removeActivityFromBucket = asyncHandler(async (req, res) => {
     const updatedUser = await user.removeFromBucket(req.params.id);
 
     res.json(updatedUser);
-    // res.json({ message: "Activity deleted" });
   } else {
     res.status(404);
     throw new Error('Could not remove activity. Please try again');
@@ -458,19 +457,10 @@ const removeActivityFromBucket = asyncHandler(async (req, res) => {
 // @access  Private
 const addActivityToTodo = asyncHandler(async (req, res) => {
   const user = await User.findById(req.body._id);
-  // const user = await User.findById(req.body._id).populate([
-  //   "bucket.items.activityId",
-  //   "toDoList.toDos.toDoId",
-  //   "completed.comps.compId",
-  //   "archive.archs.archId",
-  // ]);
 
   const activity = await Activity.findById(req.params.id);
 
   if (user && activity) {
-    // const updatedUser = await user
-    //   .addToToDo(activity)
-    //   .then((res) => res.removeFromBucket(activity._id));
     let updatedUser = await user.addToToDo(activity);
     updatedUser = await user.removeFromBucket(activity._id);
 
@@ -486,13 +476,11 @@ const addActivityToTodo = asyncHandler(async (req, res) => {
 // @access  Private
 const removeActivityFromTodo = asyncHandler(async (req, res) => {
   const user = await User.findById(req.body._id);
-  //   const activity = await Activity.findById(req.params.id);
 
   if (user) {
     const updatedUser = await user.removeFromToDo(req.params.id);
 
     res.json(updatedUser);
-    // res.json({ message: "Activity deleted" });
   } else {
     res.status(404);
     throw new Error('Could not remove activity. Please try again');
@@ -530,7 +518,6 @@ const removeActivityFromCompleted = asyncHandler(async (req, res) => {
     updatedUser = await user.removeFromCompleted(activity._id);
 
     res.json(updatedUser);
-    // res.json({ message: "Activity deleted" });
   } else {
     res.status(404);
     throw new Error('Could not archive activity. Please try again');
