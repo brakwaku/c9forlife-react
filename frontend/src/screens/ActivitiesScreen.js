@@ -58,7 +58,6 @@ const ActivitiesScreen = () => {
     loading: loadingActivitySuggestionCreate,
     error: errorActivitySuggestionCreate,
     success: successActivitySuggestionCreate,
-    // activitySuggestion: createdActivitySuggestion,
   } = activitySuggestionCreate;
 
   // const setStateSnackbarContext = useContext(SnackbarContext);
