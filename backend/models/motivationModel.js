@@ -3,14 +3,6 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const motivationSchema = new Schema({
-    // image: {
-    //   type: String,
-    //   required: true
-    // },
-    // cloudinaryId: {
-    //   type: String,
-    //   required: true
-    // },
     quote: {
       type: String,
       required: true
