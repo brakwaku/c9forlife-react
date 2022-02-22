@@ -115,23 +115,6 @@ userSchema.methods.addToToDo = function (activity) {
   } else {
     this.toDoList.toDos.push({toDoId: activity._id});
   }
-
-  // let newQuantity = 1;
-  // const updatedToDoItems = [...this.toDoList.toDos];
-
-  // if (toDoActivityIndex >= 0) {
-  //   newQuantity = this.toDoList.toDos[toDoActivityIndex].quantity + 1;
-  //   updatedToDoItems[toDoActivityIndex].quantity = newQuantity;
-  // } else {
-  //   updatedToDoItems.push({
-  //     toDoId: activity,
-  //     quantity: newQuantity,
-  //   });
-  // }
-  // const updatedToDo = {
-  //   toDos: updatedToDoItems,
-  // };
-  // this.toDoList = updatedToDo;
   return this.save();
 };
 
@@ -146,7 +129,6 @@ userSchema.methods.removeFromToDo = function (toDoId) {
 userSchema.methods.addToCompleted = function (activityId) {
   const compActivityIndex = this.completed.comps.findIndex((cp) => {
     return cp.compId.equals(activityId);
-    // return cp.compId.toString() === activityId.toString();
   });
   let newQuantity = 1;
   const updatedCompItems = [...this.completed.comps];
@@ -178,7 +160,6 @@ userSchema.methods.removeFromCompleted = function (compId) {
 userSchema.methods.addToArchive = function (activityId) {
   const archActivityIndex = this.archive.archs.findIndex((cp) => {
     return cp.archId.equals(activityId);
-    // return cp.archId.toString() === activity.toString();
   });
   let newQuantity = 1;
   const updatedArchItems = [...this.archive.archs];
