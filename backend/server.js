@@ -2,7 +2,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
-// import cors from "cors";
 import path from 'path';
 
 import activityRoutes from './routes/activityRoutes.js';
