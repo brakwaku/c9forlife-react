@@ -40,14 +40,6 @@ const deleteActivitySuggestion = asyncHandler(async (req, res) => {
     const activitySuggestion = await ActivitySuggestion.findById(req.params.id)
 
     if (activitySuggestion) {
-        // const imagePath = activity.cloudinaryId;
-
-        // try {
-        //     await cloudinary.uploader.destroy(imagePath);
-        // } catch (error) {
-        //     console.error('there was an error:', error.message.data);
-        // }
-
         await activitySuggestion.remove();
         res.json({ message: 'Activity deleted' });
     } else {
