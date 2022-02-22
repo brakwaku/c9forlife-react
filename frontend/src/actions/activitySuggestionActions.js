@@ -143,7 +143,6 @@ export const approveActivitySuggestion = (activitySuggestionId) => async (dispat
 
         const config = {
             headers: {
-                // 'Content-Type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`,
             }
         }
