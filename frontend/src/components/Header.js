@@ -62,13 +62,13 @@ const Header = () => {
             {!userInfo && (
               <>
                 <NavLink className="nav-item nav-link" to="/contact">
-                  Contact
+                  <i className="fas fa-address-book"></i> Contact
                 </NavLink>
                 <NavLink className="nav-item nav-link" to="/login">
-                  Login
+                  <i className="fas fa-sign-in-alt"></i> Login
                 </NavLink>
                 <NavLink className="nav-item nav-link" to="/register">
-                  Sign Up
+                  <i className="fas fa-user-plus"></i> Sign Up
                 </NavLink>
               </>
             )}
@@ -102,14 +102,14 @@ const Header = () => {
                   />
                   <div className="dropdown-menu dropdown-menu-sm-right" aria-labelledby="navbarDropdown">
                     <NavLink className="dropdown-item" to='/profile'>
-                      Profile
+                      <i className="fas fa-user"></i> Profile
                     </NavLink>
                     <button
                       type="button"
                       onClick={logoutHandler}
                       className="dropdown-item"
                     >
-                      Logout
+                      <i className="fas fa-sign-out-alt"></i> Logout
                     </button>
                   </div>
                 </div>
