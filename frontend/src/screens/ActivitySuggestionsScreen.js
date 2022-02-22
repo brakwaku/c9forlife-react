@@ -61,8 +61,6 @@ const ActivitySuggestionsScreen = () => {
 
     if (successDelete || successUpdate || successApprove) {
       dispatch(listActivitySuggestions());
-        // setActivitySuggestionTitle('');
-        // setActivitySuggestionDescription('');
     } else {
       dispatch(listActivitySuggestions());
     }
