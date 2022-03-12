@@ -7,7 +7,7 @@ const Footer = () => {
       <MenuWrapper>
         <NavLink to="/"> Home</NavLink> |<NavLink to="/about"> About</NavLink> | <a target="_blank" rel="noreferrer" href="mailto:Mads@c9ForLife.com">
           Email
-        </a>
+        </a> | <a target="_blank" rel="noreferrer" href="c9forLife.com"> Website </a>
       </MenuWrapper>
       <PhoneNumberWrapper>
       <a target="_blank" rel="noreferrer" href="tel:1‪(801)923-8133‬">Call: ‪(801)923-8133‬</a> | <a target="_blank" rel="noreferrer" href="sms:1‪(801)923-8133‬">Text: ‪(801)923-8133‬</a>
