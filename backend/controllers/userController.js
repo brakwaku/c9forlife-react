@@ -92,7 +92,7 @@ const registerUser = asyncHandler(async (req, res) => {
               <p>You have successfully registered on the Cloud 9 For Life web community</p>
             </div>
             <div style="display: flex; flex-direction: column; justify-self: center; align-items: center; margin-top: 2rem;">
-              <a style="background-color: #199319; color: white; padding: 15px 25px; border-radius: 10px; text-decoration: none;" href='https://c94life.herokuapp.com/login'>SIGN IN</a>
+              <a style="background-color: #199319; color: white; padding: 15px 25px; border-radius: 10px; text-decoration: none;" href='https://c9forlife.cyclic.app/login'>SIGN IN</a>
             </div>
           </div>
             `,
@@ -335,7 +335,7 @@ const getUserByEmail = asyncHandler(async (req, res) => {
               <p>Don't worry, we got your back! Click the button to set a new password.</p>
             </div>
             <div style="display: flex; flex-direction: column; justify-self: center; align-items: center; margin-top: 2rem;">
-              <a style="background-color: #199319; color: white; padding: 15px 25px; border-radius: 10px; text-decoration: none;" href='https://c9forlife.herokuapp.com/reset/${decoded.id}/${token}'>RESET PASSWORD</a>
+              <a style="background-color: #199319; color: white; padding: 15px 25px; border-radius: 10px; text-decoration: none;" href='https://c9forlife.cyclic.app/reset/${decoded.id}/${token}'>RESET PASSWORD</a>
             </div>
             <div style="display: flex; flex-direction: column; justify-self: center; align-items: center;">
               <p>If you did not forget your password, you can safely ignore this email. Thank you.</p>
