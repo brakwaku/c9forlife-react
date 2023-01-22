@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e08d010f.css",
+    "main.js": "/static/js/main.08b5e7a6.js",
+    "static/media/lo.jpg": "/static/media/lo.53f2e0cbd1fde2530be7.jpg",
+    "static/media/fam.jpg": "/static/media/fam.cecd35ee7c5c90884260.jpg",
+    "static/media/arch.jpg": "/static/media/arch.59ec2cd30f6844034c13.jpg",
+    "static/media/2ix.jpg": "/static/media/2ix.90f921b4f1683a46625d.jpg",
+    "static/media/loginii.jpg": "/static/media/loginii.2eb8e57d16955afe80f8.jpg",
+    "static/media/pearl.jpg": "/static/media/pearl.b76bea72b818d5790a13.jpg",
+    "static/media/w.jpg": "/static/media/w.f5a920ad1c6b335a16f5.jpg",
+    "static/media/gotThis.jpg": "/static/media/gotThis.232f8e6f86917c36ae82.jpg",
+    "static/media/personPlaceholder.png": "/static/media/personPlaceholder.0a38722dbbf8b677a8de.png",
+    "static/media/C9forlifeLogo.png": "/static/media/C9forlifeLogo.c48880db1088ae11d0ba.png",
+    "index.html": "/index.html",
+    "main.e08d010f.css.map": "/static/css/main.e08d010f.css.map",
+    "main.08b5e7a6.js.map": "/static/js/main.08b5e7a6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e08d010f.css",
+    "static/js/main.08b5e7a6.js"
+  ]
+}
